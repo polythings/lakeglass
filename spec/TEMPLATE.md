@@ -1,25 +1,26 @@
 ---
 number: 0
 title: Short title
-area: Foundations | Sources | Formats | Queries | Insights | Interface
+area: Stores | Formats | Queries | Insights | Interface | Apps
 status: planned
 updated: YYYY-MM-DD
+versions: []
 related: []
 issues: []
 ---
 
 # 0. Short title
 
-**Planned** · updated YYYY-MM-DD
+**Planned** · updated YYYY-MM-DD · milestone: [Name](milestones/slug.md)
 
 ## Summary
 
-Two to four sentences: what this part of lakeglass does, for whom, and why. Someone reading only this knows whether
-the spec matters to them.
+Two to four sentences: what this feature does, for whom, and why. Someone reading only this knows whether the spec
+matters to them.
 
 ## Design
 
-How it works, as precisely as needed to build or review it: models, settings (each feature has one, spec 11),
+How it works, as precisely as needed to build or review it: models, settings (each feature has one, spec 12),
 interfaces, edge cases. Cite other specs as "spec N", linked to their files.
 
 ## Decisions

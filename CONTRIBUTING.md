@@ -10,11 +10,12 @@ enforce the mechanical rules (see [Checks](#checks)). This guide covers what the
    the body.
 2. **Idiomatic.** Rust should read like Rust and TypeScript like TypeScript, not like Java.
 3. **Modular.** Each crate has one job and a small public API. Each file format, table format, and engine is its own
-   crate behind a shared trait (spec 2), so adding one never touches the others.
+   crate behind a shared trait (architecture.md), so adding one never touches the others.
 4. **One definition of each thing.** Before writing a helper, constant, or type, look for an existing one.
 5. **Behaviour, spec, and tests change together.** A change users can see updates its spec, adds or updates tests, and
    adds a line to [CHANGELOG.md](CHANGELOG.md).
-6. **Read-only.** Nothing writes to a user's store. A check suggests a fix; it never runs one.
+6. **Writes are explicit.** Nothing writes to a user's store outside write mode, and every write shows a preview and
+   asks for confirmation (spec 11).
 7. **Every check and every costly read is a setting.** It has a name for the mechanism it changes
    (`scan.sample_files`, not `scan.quick`), and docs saying what it costs and why its default is what it is.
 
@@ -44,13 +45,18 @@ ideas we took and the projects we're studying.
 - **Types over strings:** enums and newtypes instead of strings and magic numbers. Parse once at the boundary.
 - **Don't trust files.** Every reader treats bytes from a store as untrusted: check lengths and offsets before using
   them, cap allocations, and return an error instead of panicking on a malformed file.
+- **Builds for the browser.** Crates the browser uses build for `wasm32-unknown-unknown`: no threads, no blocking
+  I/O, no `std::time::Instant`, no C dependencies without a WASM build. Native-only code sits behind a feature.
 - **Reads are ranged and counted.** Read footers and metadata with range requests; go through the instrumented store
-  so every request is counted (spec 3).
+  so every request is counted (spec 2).
 - **Async:** never block inside async code. Don't hold a `Mutex` across an `.await`.
 - **Suppressing a lint:** `#[expect(lint, reason = "...")]` with a real reason. Never `#[allow]`.
 
 ## TypeScript
 
+- The interface is Next.js with a static export: no route handlers, server actions, or server-rendered dynamic
+  routes. It must work on the website, inside the Mac app, and from the CLI.
+- Views talk to the backend interface only, never to WASM, Tauri, or HTTP directly.
 - Strict mode, no `any`. Types for API responses are generated from the Rust types, not written twice.
 - Components are small and named for what they show. Data fetching stays out of drawing code.
 - Large tables and file maps are virtualized; never render one DOM node per row or per page of a big file.
