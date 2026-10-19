@@ -1,6 +1,7 @@
 # Agent instructions
 
-lakeglass: a read-only dashboard for exploring data lakes, lakehouses, and plain object storage. The project is in
+lakeglass: an app for exploring data lakes, lakehouses, and plain object storage. A Next.js interface (`app/`) over a
+Rust core (`crates/`) that runs as WebAssembly in the browser and natively in the Mac app and CLI. The project is in
 design: [spec/](spec/README.md) has one spec per part, with its status. Open questions are GitHub issues.
 
 ## Before changing code
@@ -17,8 +18,11 @@ design: [spec/](spec/README.md) has one spec per part, with its status. Open que
   `oxlint-disable` to get a check passing. Use `#[expect(..., reason = "...")]` only when the tool is genuinely wrong.
 - **Keep things in sync:** a change in behaviour updates its spec (status, design, history), the tests, and
   `CHANGELOG.md` (under `Unreleased`) in the same commit.
-- **Read-only.** Nothing in lakeglass writes, deletes, or rewrites objects in a user's store (spec 2, D4).
-- **Every check and every costly read is a setting**, named for its mechanism (spec 11).
+- **Writes only in write mode.** Nothing writes, deletes, or rewrites objects unless the connection is in write mode,
+  and every write goes through a preview and a confirmation (spec 11).
+- **The core builds for WASM.** Crates the browser uses must build for `wasm32-unknown-unknown`; CI checks it
+  (architecture.md).
+- **Every check and every costly read is a setting**, named for its mechanism (spec 12).
 - **Ideas, not code.** Never copy or translate another project's code. Credit ideas in `PRIOR_ART.md`
   (CONTRIBUTING.md, "Credit").
 - **Tests run offline.** No network, cloud accounts, or real buckets in tests; use small fixture tables built by the

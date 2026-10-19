@@ -10,11 +10,11 @@ Methods we plan to adopt and implement ourselves. Licenses checked on 2026-10-19
 
 | Idea | From | License of the source | Where in lakeglass |
 |---|---|---|---|
-| Sizing prefixes from S3 Inventory reports instead of listing, and comparing two report dates to see growth | [treeverse/lakeview](https://github.com/treeverse/lakeview) | Apache-2.0 | Store map (spec 3) |
-| Drill-down disk usage by directory | [ncdu](https://dev.yorhel.nl/ncdu) | MIT | Store map (spec 10) |
-| Reading Parquet in the browser with range requests, through Rust compiled to WebAssembly | [parquet-viewer](https://github.com/XiangpengHao/parquet-viewer) | Apache-2.0 / MIT | Browser mode (spec 2) |
+| Sizing prefixes from S3 Inventory reports instead of listing, and comparing two report dates to see growth | [treeverse/lakeview](https://github.com/treeverse/lakeview) | Apache-2.0 | Store sizes (spec 4) |
+| Drill-down disk usage by directory | [ncdu](https://dev.yorhel.nl/ncdu) | MIT | Store map (spec 3) |
+| Reading Parquet in the browser with range requests, through Rust compiled to WebAssembly | [parquet-viewer](https://github.com/XiangpengHao/parquet-viewer) | Apache-2.0 / MIT | Browser app (spec 13) |
 | Showing a columnar file as a tree of its segments and encodings | [Vortex](https://github.com/vortex-data/vortex) (`vortex-tui`) | Apache-2.0 | File anatomy (spec 5) |
-| Table health metrics as the basis for maintenance suggestions | [Apache Amoro](https://github.com/apache/amoro) | Apache-2.0 | Checks (spec 9) |
+| Table health metrics as the basis for maintenance suggestions | [Apache Amoro](https://github.com/apache/amoro) | Apache-2.0 | Checks (spec 10) |
 
 ## Studying
 

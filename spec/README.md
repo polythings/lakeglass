@@ -1,8 +1,14 @@
 # Specs
 
-lakeglass's design, one numbered spec per part. Each spec says what a part does and why, what is still open, and how
-far it is built. Start here, people and agents alike: find the spec, read its summary, follow its links. Other tools
-in the same space are compared in [landscape.md](landscape.md).
+lakeglass's design, in the spirit of Rust's RFCs and Python's PEPs, laid out like Timelake's. Start here, people and
+agents alike.
+
+- **Specs** (`NNNN-name.md`): one feature each, with the same template. A spec says what the feature does and why,
+  what is still open (as GitHub issues), how far it is built, and the releases that changed it.
+- **Milestones** ([`milestones/`](milestones/README.md)): goals made of specs, such as v0. The roadmap is the list of
+  milestones; a spec can be part of more than one.
+- **Background** (`name.md`, listed below the index): what isn't a feature: purpose and requirements, architecture,
+  security, and the landscape.
 
 ## Statuses
 
@@ -13,56 +19,83 @@ in the same space are compared in [landscape.md](landscape.md).
 | Planned | Agreed or proposed, not built yet. |
 | Dropped | Discussed and not done; kept so the reasons stay on record. |
 
+Milestones are done, in progress, planned, or exploring (an idea being looked into, which may not happen).
+
 ## Writing and changing a spec
 
-- **When:** anything beyond a small fix gets a spec, or a change to one, agreed before it is built.
-- **New spec:** copy [TEMPLATE.md](TEMPLATE.md) to `NNNN-short-name.md` with the next free number. Numbers are never
-  reused; a replaced spec is marked Dropped and links its successor.
-- **Front matter:** `number`, `title`, `area`, `status` (`done`, `in-progress`, `planned`, `dropped`), `updated`, and
-  optionally `related` (spec numbers) and `issues` (issue numbers).
-- **Sections:** Summary, Design, Decisions (rows with the next free `D` number), Open questions and issues, History.
-- **Open questions** are GitHub issues (label `question`), listed under `issues`, not paragraphs in the spec.
-- **Same commit:** when work lands, its spec's status, design, and history change with the code and the changelog,
-  and the index below is updated.
+- **When:** anything beyond a small fix gets a spec, or a change to one, agreed before it is built. A spec is one
+  feature someone could ask for by name; a theme or a version is a milestone.
+- **New spec:** copy [TEMPLATE.md](TEMPLATE.md) to `NNNN-short-name.md` with the next free number (numbers are never
+  reused; a replaced spec is marked Dropped and links its successor), and add it to a milestone.
+- **Front matter:** `number`, `title`, `area` (one of the groups below), `status` (`done`, `in-progress`, `planned`,
+  `dropped`), `updated`, `versions` (the releases that changed it, oldest first; `unreleased` until a release names
+  it), and optionally `related` (spec numbers) and `issues` (issue numbers).
+- **Sections:** Summary (a few sentences), Design, Decisions (rows with the next free `D` number), Open questions and
+  issues, History (dated, newest last).
+- **Links:** cite another spec as "spec 6", linked to its file.
+- **Open questions** are GitHub issues (label `question`), listed under `issues`, not paragraphs in the spec. Tasks
+  that aren't designs are issues too.
+- **Same commit:** when work lands, its spec's status, versions, and history change with the code and the changelog,
+  and the index below and the milestone's table are updated. (An index script, as in Timelake, comes with the first
+  code.)
 
 ## Index
 
-13 specs: 13 planned. Decisions D1–D3 are accepted; the rest are proposed.
+18 specs: 18 planned. Decisions D1–D36; accepted ones are marked in each spec.
 
-### Foundations
-
-| # | Spec | Status | Updated |
-|---:|---|---|---|
-| 1 | [Purpose and requirements](0001-purpose.md) | Planned | 2026-10-19 |
-| 2 | [Architecture](0002-architecture.md) | Planned | 2026-10-19 |
-| 11 | [Settings](0011-settings.md) | Planned | 2026-10-19 |
-| 12 | [Security and credentials](0012-security.md) | Planned | 2026-10-19 |
-| 13 | [First version (v0) and roadmap](0013-v0.md) | Planned | 2026-10-19 |
-
-### Sources
+### Stores
 
 | # | Spec | Status | Updated |
 |---:|---|---|---|
-| 3 | [Stores and connections](0003-stores.md) | Planned | 2026-10-19 |
-| 4 | [Detection](0004-detection.md) | Planned | 2026-10-19 |
+| 1 | [Store connections](0001-connections.md) | Planned | 2026-10-19 |
+| 2 | [Request counting and cache](0002-request-counting.md) | Planned | 2026-10-19 |
+| 3 | [Store map and format detection](0003-detection.md) | Planned | 2026-10-19 |
+| 4 | [Store sizes from inventory reports](0004-inventory.md) | Planned | 2026-10-19 |
 
 ### Formats
 
 | # | Spec | Status | Updated |
 |---:|---|---|---|
-| 5 | [File formats and file anatomy](0005-file-formats.md) | Planned | 2026-10-19 |
-| 6 | [Table formats and catalogs](0006-table-formats.md) | Planned | 2026-10-19 |
+| 5 | [File anatomy and rows](0005-file-anatomy.md) | Planned | 2026-10-19 |
+| 6 | [Table explorer](0006-table-explorer.md) | Planned | 2026-10-19 |
+| 7 | [Catalog connections](0007-catalogs.md) | Planned | 2026-10-19 |
+| 17 | [Proprietary warehouses](0017-warehouses.md) | Planned | 2026-10-19 |
 
 ### Queries
 
 | # | Spec | Status | Updated |
 |---:|---|---|---|
-| 7 | [Query engines](0007-engines.md) | Planned | 2026-10-19 |
-| 8 | [Query trace](0008-query-trace.md) | Planned | 2026-10-19 |
+| 8 | [SQL with pluggable engines](0008-sql-engines.md) | Planned | 2026-10-19 |
+| 9 | [Query trace](0009-query-trace.md) | Planned | 2026-10-19 |
 
-### Insights and interface
+### Insights
 
 | # | Spec | Status | Updated |
 |---:|---|---|---|
-| 9 | [Checks](0009-checks.md) | Planned | 2026-10-19 |
-| 10 | [Interface](0010-interface.md) | Planned | 2026-10-19 |
+| 10 | [Checks](0010-checks.md) | Planned | 2026-10-19 |
+| 11 | [Write mode](0011-write-mode.md) | Planned | 2026-10-19 |
+
+### Interface
+
+| # | Spec | Status | Updated |
+|---:|---|---|---|
+| 12 | [Settings](0012-settings.md) | Planned | 2026-10-19 |
+| 16 | [Format explainers](0016-format-explainers.md) | Planned | 2026-10-19 |
+
+### Apps
+
+| # | Spec | Status | Updated |
+|---:|---|---|---|
+| 13 | [Browser app](0013-browser-app.md) | Planned | 2026-10-19 |
+| 14 | [Mac app](0014-mac-app.md) | Planned | 2026-10-19 |
+| 15 | [CLI and local server](0015-cli.md) | Planned | 2026-10-19 |
+| 18 | [Packages and installers](0018-packages.md) | Planned | 2026-10-19 |
+
+## Background
+
+| Page | What it covers |
+|---|---|
+| [Purpose and requirements](purpose.md) | Requirements R1–R17 as stated, goals, non-goals, terms |
+| [Architecture](architecture.md) | The interface, the Rust core, the backends, what runs where, extension points |
+| [Security and credentials](security.md) | Where credentials go, the local server, untrusted files |
+| [Landscape](landscape.md) | Other tools in the same space |
