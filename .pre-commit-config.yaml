@@ -1,0 +1,15 @@
+# Git hooks, run by prek (https://prek.j178.dev): `uv tool install prek && prek install --install-hooks`.
+# Everything: `prek run --all-files --hook-stage pre-push`. Language hooks are added with the first code (issue #7).
+default_install_hook_types: [pre-commit, pre-push]
+
+repos:
+  - repo: builtin
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+      - id: detect-private-key
