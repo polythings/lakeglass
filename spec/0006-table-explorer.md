@@ -3,7 +3,7 @@ number: 6
 title: Table explorer
 area: Formats
 status: planned
-updated: 2026-10-19
+updated: 2026-10-20
 versions: []
 related: [3, 5, 7, 9, 10, 16]
 issues: []
@@ -11,7 +11,7 @@ issues: []
 
 # 6. Table explorer
 
-**Planned** · updated 2026-10-19 · milestones: [v0](milestones/v0.md), [More formats](milestones/more-formats.md),
+**Planned** · updated 2026-10-20 · milestones: [v0](milestones/v0.md), [More formats](milestones/more-formats.md),
 [Catalogs and large stores](milestones/catalogs.md)
 · related: [spec 3](0003-detection.md), [spec 5](0005-file-anatomy.md), [spec 7](0007-catalogs.md),
 [spec 9](0009-query-trace.md), [spec 10](0010-checks.md), [spec 16](0016-format-explainers.md)
@@ -52,7 +52,8 @@ Every view can be pinned to an older snapshot.
 | Fluss remote storage | Log offsets, KV snapshots | Log segments and indexes; KV snapshot SSTs; links to tiered Paimon, Iceberg, or Lance tables | More formats |
 | DuckLake | Catalog tables | Catalog rows → files | Catalogs and large stores |
 
-Readers are lakeglass's own ([architecture](architecture.md), D8).
+Readers are lakebed's format crates, shared with Timelake ([architecture](architecture.md), D8); Iceberg is built
+there, and the other formats are added there as this spec needs them.
 
 ### Cost
 
@@ -73,3 +74,4 @@ None open.
 ## History
 
 - 2026-10-19: proposed.
+- 2026-10-20: readers come from lakebed (D8).

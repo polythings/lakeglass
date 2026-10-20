@@ -57,7 +57,7 @@ Milestones are done, in progress, planned, or exploring (an idea being looked in
 | # | Spec | Status | Updated |
 |---:|---|---|---|
 | 5 | [File anatomy and rows](0005-file-anatomy.md) | Planned | 2026-10-19 |
-| 6 | [Table explorer](0006-table-explorer.md) | Planned | 2026-10-19 |
+| 6 | [Table explorer](0006-table-explorer.md) | Planned | 2026-10-20 |
 | 7 | [Catalog connections](0007-catalogs.md) | Planned | 2026-10-19 |
 | 17 | [Proprietary warehouses](0017-warehouses.md) | Planned | 2026-10-19 |
 
@@ -73,7 +73,7 @@ Milestones are done, in progress, planned, or exploring (an idea being looked in
 | # | Spec | Status | Updated |
 |---:|---|---|---|
 | 10 | [Checks](0010-checks.md) | Planned | 2026-10-19 |
-| 11 | [Write mode](0011-write-mode.md) | Planned | 2026-10-19 |
+| 11 | [Write mode](0011-write-mode.md) | Planned | 2026-10-20 |
 
 ### Interface
 
