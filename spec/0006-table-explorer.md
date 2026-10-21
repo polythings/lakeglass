@@ -52,7 +52,7 @@ Every view can be pinned to an older snapshot.
 | Fluss remote storage | Log offsets, KV snapshots | Log segments and indexes; KV snapshot SSTs; links to tiered Paimon, Iceberg, or Lance tables | More formats |
 | DuckLake | Catalog tables | Catalog rows → files | Catalogs and large stores |
 
-Readers are lakebed's format crates, shared with Timelake ([architecture](architecture.md), D8); Iceberg is built
+Readers are lakekit's format crates, shared with Timelake ([architecture](architecture.md), D8); Iceberg is built
 there, and the other formats are added there as this spec needs them.
 
 ### Cost
@@ -74,4 +74,4 @@ None open.
 ## History
 
 - 2026-10-19: proposed.
-- 2026-10-20: readers come from lakebed (D8).
+- 2026-10-20: readers come from lakekit (D8).

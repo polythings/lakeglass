@@ -56,10 +56,10 @@ format's own commit protocol; nothing edits a table's files behind its metadata.
 | Rewrite manifests, compact small files | Table, through the format's commit | Native first |
 | Run a fix from a finding (spec 10) | Any of the above | As above |
 
-Table actions go through each format's commit protocol. For Iceberg that is lakebed's (`lakebed-iceberg`, D8), which
+Table actions go through each format's commit protocol. For Iceberg that is lakekit's (`lakekit-iceberg`, D8), which
 builds for the browser as well as natively and whose tests check that iceberg-rust reads what it commits; it commits
 format v2 tables kept without a catalog (`v<N>.metadata.json`), and tables in a catalog commit through the catalog
-(spec 7). Other formats run natively first, through the official crates (delta-rs, …), until lakebed has them. In the
+(spec 7). Other formats run natively first, through the official crates (delta-rs, …), until lakekit has them. In the
 browser, writes also need PUT and DELETE in the bucket's CORS rule.
 
 ## Decisions
@@ -67,7 +67,7 @@ browser, writes also need PUT and DELETE in the bucket's CORS rule.
 | ID | Decision | Status |
 |---|---|---|
 | D28 | Writing is allowed only in write mode, per connection, with a warning, a banner, a preview, and a typed confirmation. | Accepted |
-| D29 | Table changes go through the format's commit protocol: lakebed's where it has the format (Iceberg, in the browser too), the official crates natively otherwise. | Proposed |
+| D29 | Table changes go through the format's commit protocol: lakekit's where it has the format (Iceberg, in the browser too), the official crates natively otherwise. | Proposed |
 
 ## Open questions and issues
 
@@ -77,4 +77,4 @@ None open.
 
 - 2026-10-19: proposed after [#4](https://github.com/polythings/lakeglass/issues/4): writing allowed, with the dangers
   made very clear.
-- 2026-10-20: Iceberg table actions through lakebed's commit, in the browser too (D8).
+- 2026-10-20: Iceberg table actions through lakekit's commit, in the browser too (D8).

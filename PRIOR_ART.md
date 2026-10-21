@@ -8,7 +8,7 @@ other tools is in [spec/landscape.md](spec/landscape.md).
 
 | Project | License | What lakeglass uses |
 |---|---|---|
-| [lakebed](https://github.com/polythings/lakebed) | Apache-2.0 | Table format metadata read and written without I/O, in the browser and natively (D8); a sibling project |
+| [lakekit](https://github.com/polythings/lakekit) | Apache-2.0 | Table format metadata read and written without I/O, in the browser and natively (D8); a sibling project |
 
 ## Ideas
 

@@ -48,14 +48,14 @@ Checked on 2026-10-19 by compiling each crate for `wasm32-unknown-unknown`:
 |------|----------------|--------|
 | Store access | `object_store` 0.14 with the `aws-base`, `gcp-base`, `azure-base`, and `http-base` features and `ring` for wasm; requests are subject to CORS (spec 13) | `object_store` with full features; credential chains |
 | Parquet, Arrow IPC, Avro, ORC, Vortex | arrow-rs, parquet, apache-avro, orc-rust, vortex: compile | Same crates |
-| Iceberg, Delta, Hudi, Paimon, Lance, SlateDB metadata | [lakebed](https://github.com/polythings/lakebed)'s format crates (Iceberg built; the others added there as lakeglass needs them), which do no I/O and build for wasm32. The official Rust crates (iceberg, deltalake, delta_kernel, hudi, lance, slatedb) don't compile to wasm32 | The same lakebed crates for exploring; the official crates where an engine needs them |
+| Iceberg, Delta, Hudi, Paimon, Lance, SlateDB metadata | [lakekit](https://github.com/polythings/lakekit)'s format crates (Iceberg built; the others added there as lakeglass needs them), which do no I/O and build for wasm32. The official Rust crates (iceberg, deltalake, delta_kernel, hudi, lance, slatedb) don't compile to wasm32 | The same lakekit crates for exploring; the official crates where an engine needs them |
 | Engines | DataFusion 55 (single-threaded); DuckDB-wasm (Parquet, Iceberg, DuckLake; no Delta extension in WASM) | DataFusion with table providers, native DuckDB, others (spec 8) |
-| Writes (spec 11) | Plain object operations; Iceberg table operations through lakebed's commit | Plain object operations; table operations through lakebed (Iceberg) or the official crates (the rest, until lakebed has them) |
+| Writes (spec 11) | Plain object operations; Iceberg table operations through lakekit's commit | Plain object operations; table operations through lakekit (Iceberg) or the official crates (the rest, until lakekit has them) |
 
 Reading table metadata with our own code is a deliberate choice, not only a WASM workaround: an explorer has to show
-each metadata file as it is, including files the official libraries would reject or hide. That code is lakebed, a
+each metadata file as it is, including files the official libraries would reject or hide. That code is lakekit, a
 sibling project shared with Timelake: one crate per format on a `Host` trait that lakeglass implements over its counted
-store (spec 2). lakebed shows each format as it is (metadata JSON kept whole, manifests read field by field, unknown
+store (spec 2). lakekit shows each format as it is (metadata JSON kept whole, manifests read field by field, unknown
 types kept by name); lakeglass's `TableFormat` crates adapt it to the table model, and file anatomy (spec 5) stays
 here.
 
@@ -78,7 +78,7 @@ conformance test suite that every implementation runs against fixtures.
 | `lakeglass-store` | Connections, the counting layer, the cache (specs 1, 2) |
 | `lakeglass-detect` | Detection (spec 3) |
 | `lakeglass-parquet`, … | One crate per file format |
-| `lakeglass-iceberg`, … | One crate per table format: the `TableFormat` trait over lakebed's crate for it (`lakebed-iceberg`, …) |
+| `lakeglass-iceberg`, … | One crate per table format: the `TableFormat` trait over lakekit's crate for it (`lakekit-iceberg`, …) |
 | `lakeglass-datafusion`, `lakeglass-duckdb`, … | One crate per engine |
 | `lakeglass-checks` | Checks (spec 10) |
 | `lakeglass-wasm` | The browser backend (wasm-bindgen) |
@@ -93,7 +93,7 @@ Crates are added as they're built.
 |---|---|---|
 | D6 | Browser first: the interface is a Next.js static export and the core runs as WebAssembly in a worker; the Mac app and CLI run the same core natively. | Accepted |
 | D7 | Store access through `object_store`; OpenDAL may be added later behind the same counting layer ([#6](https://github.com/polythings/lakeglass/issues/6)). | Accepted |
-| D8 | lakeglass reads (and in write mode writes) table metadata with [lakebed](https://github.com/polythings/lakebed)'s format crates, a sibling project shared with Timelake: no I/O of their own, built for WASM, each format shown as it is. Formats lakeglass needs are added there. | Accepted |
+| D8 | lakeglass reads (and in write mode writes) table metadata with [lakekit](https://github.com/polythings/lakekit)'s format crates, a sibling project shared with Timelake: no I/O of their own, built for WASM, each format shown as it is. Formats lakeglass needs are added there. | Accepted |
 | D9 | One TypeScript backend interface with WASM, Tauri, and HTTP implementations. | Proposed |
 | D10 | Three Rust traits, `FileFormat`, `TableFormat`, and `Engine`, with one crate per implementation and a registry. | Proposed |
 | D11 | Arrow in memory and between the core and the interface. | Proposed |
@@ -102,4 +102,4 @@ Crates are added as they're built.
 
 - 2026-10-19: proposed as a local server with an embedded UI; changed the same day to browser first with Next.js
   after [#1](https://github.com/polythings/lakeglass/issues/1) and [#7](https://github.com/polythings/lakeglass/issues/7).
-- 2026-10-20: table format readers and writers come from lakebed, shared with Timelake (D8 accepted).
+- 2026-10-20: table format readers and writers come from lakekit, shared with Timelake (D8 accepted).
