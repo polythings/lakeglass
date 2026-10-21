@@ -72,7 +72,7 @@ Milestones are done, in progress, planned, or exploring (an idea being looked in
 
 | # | Spec | Status | Updated |
 |---:|---|---|---|
-| 10 | [Checks](0010-checks.md) | Planned | 2026-10-19 |
+| 10 | [Checks](0010-checks.md) | Planned | 2026-10-21 |
 | 11 | [Write mode](0011-write-mode.md) | Planned | 2026-10-19 |
 
 ### Interface
