@@ -3,15 +3,15 @@ number: 10
 title: Checks
 area: Insights
 status: planned
-updated: 2026-10-19
+updated: 2026-10-21
 versions: []
 related: [5, 6, 9, 11, 12]
-issues: []
+issues: [13]
 ---
 
 # 10. Checks
 
-**Planned** · updated 2026-10-19 · milestones: [v0](milestones/v0.md), [More formats](milestones/more-formats.md),
+**Planned** · updated 2026-10-21 · milestones: [v0](milestones/v0.md), [More formats](milestones/more-formats.md),
 [Write mode](milestones/write-mode.md)
 · related: [spec 5](0005-file-anatomy.md), [spec 6](0006-table-explorer.md), [spec 9](0009-query-trace.md),
 [spec 11](0011-write-mode.md), [spec 12](0012-settings.md)
@@ -61,8 +61,9 @@ Each check names the formats it applies to; format crates add their own.
 
 ## Open questions and issues
 
-None open.
+- [#13](https://github.com/polythings/lakeglass/issues/13) Checks: which table-health ideas from lake-pulse to adopt?
 
 ## History
 
 - 2026-10-19: proposed.
+- 2026-10-21: lake-pulse's metrics compared with the checks ([#13](https://github.com/polythings/lakeglass/issues/13)).

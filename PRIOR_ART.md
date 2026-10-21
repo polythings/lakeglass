@@ -25,3 +25,4 @@ Methods we plan to adopt and implement ourselves. Licenses checked on 2026-10-19
 | [Apache XTable](https://github.com/apache/incubator-xtable) | Apache-2.0 | One model of a table across Iceberg, Delta, and Hudi metadata |
 | [lance-data-viewer](https://github.com/lance-format/lance-data-viewer) | MIT | Browsing Lance tables |
 | [hyparquet](https://github.com/hyparam/hyparquet), [hightable](https://github.com/hyparam/hightable) | MIT | Pure-JS Parquet reads by range; a virtualized table for large results |
+| [lake-pulse](https://github.com/adobe/lake-pulse) | MIT / Apache-2.0 | Table health across formats: breaking schema changes, snapshot retention against age, deletion-vector load, and scores per area; candidates for the checks ([#13](https://github.com/polythings/lakeglass/issues/13)) |
