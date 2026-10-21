@@ -55,9 +55,9 @@ Checked on 2026-10-19 by compiling each crate for `wasm32-unknown-unknown`:
 Reading table metadata with our own code is a deliberate choice, not only a WASM workaround: an explorer has to show
 each metadata file as it is, including files the official libraries would reject or hide. That code is lakekit, a
 sibling project shared with Timelake: one crate per format on a `Store` trait, which lakeglass implements over its
-counted store (spec 2), natively with lakekit's `object_store` adapter underneath, and an `Env` for writes. lakekit
-shows each format as it is (metadata JSON kept whole, manifests read field by field, unknown types kept by name);
-lakeglass's `TableFormat` crates adapt it to the table model, and file anatomy (spec 5) stays here.
+counted store (spec 2), natively with lakekit's `object_store` adapter underneath, and a `Clock` and `Random` for
+writes. lakekit shows each format as it is (metadata JSON kept whole, manifests read field by field, unknown types
+kept by name); lakeglass's `TableFormat` crates adapt it to the table model, and file anatomy (spec 5) stays here.
 
 ### Extension points
 
