@@ -4,6 +4,12 @@ This file credits the ideas lakeglass takes from other open-source projects and 
 take ideas, never code. How to credit is in [CONTRIBUTING.md](CONTRIBUTING.md#credit); how lakeglass compares with
 other tools is in [spec/landscape.md](spec/landscape.md).
 
+## Foundations
+
+| Project | License | What lakeglass uses |
+|---|---|---|
+| [lakekit](https://github.com/polythings/lakekit) | Apache-2.0 | Table format metadata read and written without I/O, in the browser and natively (D8); a sibling project |
+
 ## Ideas
 
 Methods we plan to adopt and implement ourselves. Licenses checked on 2026-10-19.
